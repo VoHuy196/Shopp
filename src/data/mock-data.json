@@ -1,0 +1,100 @@
+{
+    "products": [
+        {
+            "id": "prod_001",
+            "name": "Áo Thun Basic Cotton",
+            "description": "Áo thun nam nữ chất liệu 100% Cotton, thấm hút mồ hôi tốt.",
+            "hasVariant": true,
+            "createdAt": "2023-10-01T08:00:00Z",
+            "updatedAt": "2023-10-01T08:00:00Z",
+            "variants": [
+                {
+                    "id": "var_001_1",
+                    "sku": "TS-BLK-M",
+                    "price": 80000,
+                    "salePrice": 150000,
+                    "barcode": "8930000001001",
+                    "quantity": 50
+                },
+                {
+                    "id": "var_001_2",
+                    "sku": "TS-BLK-L",
+                    "price": 80000,
+                    "salePrice": 150000,
+                    "barcode": "8930000001002",
+                    "quantity": 50
+                },
+                {
+                    "id": "var_001_3",
+                    "sku": "TS-WHT-M",
+                    "price": 80000,
+                    "salePrice": 150000,
+                    "barcode": "8930000001003",
+                    "quantity": 50
+                }
+            ]
+        },
+        {
+            "id": "prod_002",
+            "name": "Smartphone Galaxy X",
+            "description": "Điện thoại thông minh màn hình gập, 256GB.",
+            "hasVariant": true,
+            "createdAt": "2023-10-05T10:30:00Z",
+            "updatedAt": "2023-10-05T10:30:00Z",
+            "variants": [
+                {
+                    "id": "var_002_1",
+                    "sku": "SP-X-BLK",
+                    "price": 15000000,
+                    "salePrice": 22000000,
+                    "barcode": "8800000002001",
+                    "quantity": 50
+                },
+                {
+                    "id": "var_002_2",
+                    "sku": "SP-X-SLV",
+                    "price": 15000000,
+                    "salePrice": 22000000,
+                    "barcode": "8800000002002",
+                    "quantity": 50
+                }
+            ]
+        },
+        {
+            "id": "prod_003",
+            "name": "Nước Ngọt Coca Cola 330ml",
+            "description": "Thùng 24 lon.",
+            "hasVariant": false,
+            "createdAt": "2023-10-10T09:00:00Z",
+            "updatedAt": "2023-10-10T09:00:00Z",
+            "variants": [
+                {
+                    "id": "var_003_1",
+                    "sku": "BV-COKE-330",
+                    "price": 180000,
+                    "salePrice": 240000,
+                    "barcode": "8930000003001",
+                    "quantity": 50
+                }
+            ]
+        }
+    ],
+    "suppliers": [
+        {
+            "id": "sup_001",
+            "name": "Công Ty May Mặc Việt Á",
+            "contact": "Nguyễn Văn A",
+            "phone": "0901234567",
+            "address": "123 KCN Tân Bình, TP.HCM",
+            "email": "contact@vieta.vn"
+        },
+        {
+            "id": "sup_002",
+            "name": "Samsung Electronics VN",
+            "contact": "Trần Thị B",
+            "phone": "0909888777",
+            "address": "khu Công Nghệ Cao, Q.9, TP.HCM",
+            "email": "sales.vn@samsung.com"
+        }
+    ]
+}
