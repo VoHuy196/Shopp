@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-// --- Context Providers ---
-import { AuthProvider } from './contexts/AuthContext';
-import { CartProvider } from './contexts/CartContext';
+// --- Stores (Zustand - no Provider needed) ---
+
 
 // --- Layouts ---
 import { MainLayout } from './components/layouts/MainLayout';
@@ -48,9 +47,8 @@ import { UserManagementPage } from './pages/user-management/UserManagementPage';
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+
           <Routes>
             
             {/* --- KHU VỰC CỬA HÀNG (PUBLIC) --- */}
@@ -121,8 +119,6 @@ function App() {
             
           </Routes>
         </BrowserRouter>
-      </CartProvider>
-    </AuthProvider>
   );
 }
 

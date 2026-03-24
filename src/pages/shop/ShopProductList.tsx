@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { ProductService } from '@/services';
+import { useProducts } from '@/hooks/queries/useProducts';
 import type { Product } from '@/types';
 import { Button, Card, CardContent, CardFooter, Input } from '@/components/ui';
-import { useCart } from '@/contexts/CartContext';
+import { useCartStore } from '@/stores';
+
 import { ShoppingCart, Search, Filter } from 'lucide-react';
 
 export const ShopProductList = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const { addToCart } = useCart();
+    const addToCart = useCartStore.getState().addToCart;
+
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {

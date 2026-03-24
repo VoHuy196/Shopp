@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuthStore } from '@/stores';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
+
 import { Button, Input, Card, CardHeader, CardTitle, CardContent } from '@/components/ui';
 import { Lock, User as UserIcon } from 'lucide-react';
 
@@ -8,8 +9,9 @@ export const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login, isAuthenticated, user } = useAuth(); // Lấy thêm user từ context
+    const { login, isAuthenticated, user } = useAuthStore();
     const navigate = useNavigate();
+
 
     // Nếu đã đăng nhập rồi mà vào lại trang login, tự động redirect đúng role
     if (isAuthenticated && user) {
@@ -57,7 +59,7 @@ export const LoginPage = () => {
                                 onChange={(e) => setUsername(e.target.value)} 
                             />
                         </div>
-                        <div className="space-y-2 relative">
+                        <div className="space-y-2 relative">                                            
                             <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
                             <Input 
                                 type="password" 

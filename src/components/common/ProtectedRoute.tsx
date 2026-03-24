@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuthStore } from '@/stores';
 
 export const ProtectedRoute = () => {
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated, user } = useAuthStore();
 
     // Nếu chưa đăng nhập -> Chuyển về trang Login
     if (!isAuthenticated) {

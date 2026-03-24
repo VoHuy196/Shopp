@@ -140,7 +140,10 @@ export const TaskBoard = () => {
             <Dialog open={createTaskDialogOpen} onOpenChange={setCreateTaskDialogOpen}>
                 <DialogContent className="sm:max-w-[600px]">
                     <DialogHeader>
+
                         <DialogTitle>Tạo công việc mới</DialogTitle>
+                        <DialogDescription>Điền thông tin chi tiết cho thẻ công việc mới trong dự án.</DialogDescription>
+
                         <DialogDescription>Điền thông tin chi tiết cho thẻ công việc mới.</DialogDescription>
                     </DialogHeader>
                     {/* ... (Giữ nguyên form Create như code cũ) ... */}
@@ -365,7 +368,8 @@ export const TaskBoard = () => {
                                                     className="text-[10px] border-none bg-transparent font-medium focus:ring-0 text-muted-foreground"
                                                     value={task.status}
                                                     onChange={(e) => handleMoveTask(task.id, e.target.value as TaskStatus)}
-                                                    
+                                                    aria-label="Thay đổi trạng thái công việc"
+                                                    title="Thay đổi trạng thái công việc"
                                                 >
                                                     {COLUMNS.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
                                                 </select>

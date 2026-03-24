@@ -1,46 +1,27 @@
-import { useEffect, useState, Fragment } from 'react';
-import { ProductService, CategoryService } from '@/services';
-import type { Product, Category } from '@/types';
+import { Fragment } from 'react';
+import { useProducts, useCategories } from '@/hooks/queries/useProducts';
+import type { Product, Category } from '@/types/product';
+import type { Category as CategoryType } from '@/types/category';
+import { ProductService } from '@/services';
 import { Button, Input } from '@/components/ui';
 import { Plus, ChevronDown, ChevronRight, Edit2, Trash2, AlertTriangle, Package, Layers, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 export const ProductList = () => {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [loading, setLoading] = useState(true);
+    const productsQuery = useProducts();
+    const categoriesQuery = useCategories();
     const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
 
-    useEffect(() => {
-        const loadInitData = async () => {
-            setLoading(true);
-            try {
-                const [prodData, catData] = await Promise.all([
-                    ProductService.getAll(),
-                    CategoryService.getAll()
-                ]);
-                setProducts(prodData);
-                setCategories(catData);
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        loadInitData();
-    }, []);
+    const { data: products = [], isLoading: productsLoading } = productsQuery;
+    const { data: categories = [] } = categoriesQuery;
+
+    const loading = productsLoading || categoriesQuery.isLoading;
+
+    const refetchProducts = () => productsQuery.refetch();
 
     const loadData = async () => {
-        setLoading(true);
-        try {
-            const data = await ProductService.getAll();
-            setProducts(data);
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
+        await refetchProducts();
     };
 
     // Helper to check low stock
@@ -68,7 +49,7 @@ export const ProductList = () => {
     const handleDelete = async (id: string) => {
         if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
             await ProductService.delete(id);
-            loadData();
+            refetchProducts();
         }
     };
 

@@ -1,10 +1,16 @@
 import React from 'react';
-import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui';
 import { useNavigate } from 'react-router-dom';
+import { useCartStore, useCartCount, useCartTotal } from '@/stores';
+import type { CartItem } from '@/stores';
 
 export const CartPage = () => {
-    const { cartItems, removeFromCart, clearCart, cartTotal, cartCount, updateQuantity } = useCart();
+    const cartCount = useCartCount();
+    const cartTotal = useCartTotal();
+    const cartItems = useCartStore((state) => state.cartItems);
+    const removeFromCart = useCartStore((state) => state.removeFromCart);
+    const clearCart = useCartStore((state) => state.clearCart);
+    const updateQuantity = useCartStore((state) => state.updateQuantity);
     const navigate = useNavigate();
 
     const handleCheckout = () => {
@@ -32,14 +38,14 @@ export const CartPage = () => {
             ) : (
                 <div className="bg-white border rounded-lg shadow-sm overflow-hidden">
                     <div className="divide-y">
-                        {cartItems.map(item => (
+                        {cartItems.map((item: CartItem) => (
                             <div key={item.variantId} className="flex items-center justify-between p-4">
                                 <div>
                                     <div className="font-medium">{item.productName}</div>
                                     <div className="text-sm text-slate-500">SKU: {item.sku}</div>
                                 </div>
                                 <div className="text-right space-y-1">
-                                    <div className="font-semibold">{(item.price).toLocaleString()} VND</div>
+                                    <div className="font-semibold">{item.price.toLocaleString()} VND</div>
                                     <div className="flex items-center gap-3">
                                         <div className="flex items-center gap-2">
                                             <Button size="sm" variant="outline" onClick={() => updateQuantity(item.variantId, item.quantity - 1)}>-</Button>
@@ -70,3 +76,4 @@ export const CartPage = () => {
         </div>
     );
 };
+

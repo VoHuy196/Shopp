@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { UserService } from '@/services';
 import type { User } from '@/types';
-import { Button, Input, Label, Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui';
+import { Button, Input, Label, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui';
 import { Trash2, Edit2 } from 'lucide-react';
 
 export const UserManagementPage = () => {
@@ -158,9 +158,12 @@ export const UserManagementPage = () => {
             {/* Edit Dialog */}
             <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
                 <DialogContent className="max-w-md">
+
                     <DialogHeader>
                         <DialogTitle>Chỉnh Sửa Tài Khoản</DialogTitle>
+                        <DialogDescription>Cập nhật thông tin tài khoản người dùng, bao gồm tên đăng nhập, email và vai trò.</DialogDescription>
                     </DialogHeader>
+
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="edit-username">Tên đăng nhập *</Label>
