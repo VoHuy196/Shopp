@@ -1,10 +1,10 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Package, Users, TrendingUp, Warehouse, FolderKanban, LogOut, UserCog, UserCheck, Clock } from 'lucide-react';
 import { Button } from '@/components/ui';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuthStore } from '@/stores';
 
 export const MainLayout = () => {
-    const { user, logout } = useAuth();
+    const { user, logout } = useAuthStore();
     const location = useLocation();
 
     const adminMenuItems = [

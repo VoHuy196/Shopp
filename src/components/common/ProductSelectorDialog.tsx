@@ -5,7 +5,7 @@ import type { Product, ProductVariant } from '@/shared-bridge';
 import type { Category } from '@/shared-bridge';
 import { Button } from '@/components/ui';
 import { Input } from '@/components/ui';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui';
 import { Search } from 'lucide-react';
 
 interface ProductSelectorProps {
@@ -57,9 +57,13 @@ export const ProductSelectorDialog = ({ open, onOpenChange, onSelect, showQuanti
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="max-w-3xl h-[80vh] flex flex-col">
-                <DialogHeader>
-                    <DialogTitle>Chọn sản phẩm</DialogTitle>
-                </DialogHeader>
+
+                    <DialogHeader>
+                        <DialogTitle>Chọn sản phẩm</DialogTitle>
+                        <DialogDescription>Tìm và chọn sản phẩm hoặc biến thể từ danh sách. Sử dụng tìm kiếm và bộ lọc để dễ dàng chọn.</DialogDescription>
+
+                    </DialogHeader>
+
 
                 <div className="space-y-4 py-2">
                     {/* Filters */}
@@ -77,8 +81,12 @@ export const ProductSelectorDialog = ({ open, onOpenChange, onSelect, showQuanti
                             className="h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 w-[200px]"
                             value={selectedCategory}
                             onChange={(e) => setSelectedCategory(e.target.value)}
+                            title="Lọc theo nhóm hàng"
+                            aria-label="Lọc theo nhóm hàng"
                         >
                             <option value="">-- Tất cả nhóm hàng --</option>
+                                title="Lọc theo nhóm hàng"
+
                             {categories.map(c => (
                                 <option key={c.id} value={c.id}>{c.name}</option>
                             ))}

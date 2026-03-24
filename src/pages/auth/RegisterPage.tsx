@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserService } from '@/services';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuthStore } from '@/stores';
+
 import { Button, Input, Card, CardHeader, CardTitle, CardContent, Label } from '@/components/ui';
 
 export const RegisterPage = () => {

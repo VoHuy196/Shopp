@@ -1,12 +1,12 @@
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Store, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui';
-import { useCart } from '@/contexts/CartContext';
-import { useAuth } from '@/contexts/AuthContext';
+import { useCartStore, useCartCount, useCartTotal } from '@/stores';
+import { useAuthStore } from '@/stores';
 
 export const ShopLayout = () => {
-    const { cartCount } = useCart();
-    const { isAuthenticated, user, logout } = useAuth();
+    const cartCount = useCartCount();
+    const { isAuthenticated, user, logout } = useAuthStore();
     const navigate = useNavigate();
 
     return (
